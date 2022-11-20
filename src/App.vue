@@ -7,20 +7,30 @@
     <router-link to="/register"><ButtonTemplate text="Register" color="orange" /> </router-link>
   </nav>
   <router-view/>
+
   <!-- <HeroView /> -->
 </template>
 
 <script>
 import ButtonTemplate from './components/ButtonTemplate.vue';
-// import HeroView from './components/HeroView.vue';
-// import CartTotal from './components/CartTotal.vue';
 
 export default {
   name: 'App',
   components: {
     ButtonTemplate,
-    // CartTotal,
-    // HeroView,
+  },
+  data() {
+    return {
+      ProductCategories: [],
+    };
+  },
+  created() {
+    this.ProductCategories = [
+      'electronics',
+      'jewelery',
+      "men's clothing",
+      "women's clothing",
+    ];
   },
 };
 </script>
