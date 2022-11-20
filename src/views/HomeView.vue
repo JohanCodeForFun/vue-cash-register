@@ -1,8 +1,5 @@
 <template>
-  <div class="home">
-    <h2>What are you looking for?</h2>
-    <!-- <ProductCategories :categories="categories"/> -->
-  </div>
+  <h2>What are you looking for?</h2>
   <ProductCategories />
 </template>
 

@@ -7,8 +7,6 @@
     <router-link to="/register"><ButtonTemplate text="Register" color="orange" /> </router-link>
   </nav>
   <router-view/>
-
-  <!-- <HeroView /> -->
 </template>
 
 <script>
@@ -18,19 +16,6 @@ export default {
   name: 'App',
   components: {
     ButtonTemplate,
-  },
-  data() {
-    return {
-      ProductCategories: [],
-    };
-  },
-  created() {
-    this.ProductCategories = [
-      'electronics',
-      'jewelery',
-      "men's clothing",
-      "women's clothing",
-    ];
   },
 };
 </script>
