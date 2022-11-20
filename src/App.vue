@@ -1,39 +1,43 @@
 <template>
   <nav>
+    <img src="./img/logo-svgrepo-com.svg" alt="logo" class="logo">
+    <span>Stephanies: </span>
     <router-link to="/">Home</router-link> |
-    <router-link to="/shop">Shop</router-link> |
-    <router-link to="/register">Register</router-link> |
-    <!-- <router-link to="/about">About</router-link> -->
-    <CartTotal />
+    <router-link to="/cart"><ButtonTemplate text="Cart" color="green" /> </router-link>
+    <router-link to="/register"><ButtonTemplate text="Register" color="orange" /> </router-link>
   </nav>
   <router-view/>
   <!-- <HeroView /> -->
 </template>
 
 <script>
+import ButtonTemplate from './components/ButtonTemplate.vue';
 // import HeroView from './components/HeroView.vue';
-import CartTotal from './components/CartTotal.vue';
+// import CartTotal from './components/CartTotal.vue';
 
 export default {
   name: 'App',
   components: {
-    CartTotal,
+    ButtonTemplate,
+    // CartTotal,
     // HeroView,
   },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  border: 1px solid red;
 }
 
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 }
 
@@ -44,5 +48,10 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.logo {
+  height: 2rem;
+  width: 2rem;
 }
 </style>
