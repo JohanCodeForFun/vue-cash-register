@@ -17,13 +17,15 @@
 
   <h3 class="all-products-Header">All products below...</h3>
 
-  <div :key="item" v-for="item in products">
+  <div class="product-card" :key="item" v-for="item in products">
     <h3>{{ item.title }}</h3>
     <img v-bind:src="item.image" :alt="item.title">
+    <p class="buy-paragraph">${{ item.price }} <ButtonTemplate  text="Buy" color="green"/></p>
   </div>
 </template>
 
 <script>
+import ButtonTemplate from './ButtonTemplate.vue';
 
 export default {
   name: 'ProductCategories',
@@ -41,9 +43,7 @@ export default {
       return data;
     },
     getCategories() {
-      this.categories.push(this.products.find(
-        (element) => element.category === "men's clothing",
-      ));
+      this.categories.push(this.products.find((element) => element.category === "men's clothing"));
       console.log(this.categories);
       // this.categories.push(this.products.find(
       //   (element) => element.category === "men's clothing",
@@ -88,11 +88,20 @@ export default {
   mounted() {
     console.log('mounted log');
   },
+  components: { ButtonTemplate },
 };
 
 </script>
 
 <style>
+.product-card {
+  width: 80vw;
+}
+.buy-paragraph {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 img {
   width: 100%;
 }
