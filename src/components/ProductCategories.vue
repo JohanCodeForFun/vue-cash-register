@@ -20,7 +20,8 @@
   <div class="product-card" :key="item" v-for="item in products">
     <h3>{{ item.title }}</h3>
     <img v-bind:src="item.image" :alt="item.title">
-    <p class="buy-paragraph">${{ item.price }} <ButtonTemplate  text="Buy" color="green"/></p>
+    <p class="buy-paragraph">${{ item.price }} <ButtonTemplate @click="addToCart(item.id)"
+       text="Buy" color="green"/></p>
   </div>
 </template>
 
@@ -33,9 +34,14 @@ export default {
     return {
       products: [],
       categories: [],
+      cart: [],
     };
   },
   methods: {
+    addToCart(id) {
+      this.cart.push(this.products.find((element) => element.id === id));
+      console.log(this.cart);
+    },
     // try: {
     async fetchAllProducts() {
       const res = await fetch('https://fakestoreapi.com/products');
@@ -73,7 +79,9 @@ export default {
     // to display each category of first item
     catMensClothes() {
       // return this.products[1].category, << first code
-      return this.products.find((element) => element.category === "men's clothing");
+      return {
+        object: this.products.find((element) => element.category === "men's clothing"),
+      };
     },
     // categoryJewelry() {
     //   return this.products.find((element) => element.category === 'jewelery');
@@ -88,7 +96,9 @@ export default {
   mounted() {
     console.log('mounted log');
   },
-  components: { ButtonTemplate },
+  components: {
+    ButtonTemplate,
+  },
 };
 
 </script>
@@ -101,6 +111,12 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.product-card {
+  border: 1px solid red;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 img {
   width: 100%;
