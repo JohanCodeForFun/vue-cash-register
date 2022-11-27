@@ -3,9 +3,9 @@
 Sum: {{ cartSum }}
 </span>
 <h3>Produkter i kundkorgen:</h3>
-<p>1) ...</p>
-<p>2) ...</p>
-<p>3) ...</p>
+<p>1) ... <button>Remove Product</button></p>
+<p>2) ... <button>Remove Product</button></p>
+<p>3) ... <button>Remove Product</button></p>
 <p>Saknar koppling...</p>
 <ButtonTemplate text="Buy Products" color="green"/>
 <ButtonTemplate text="Clear Cart" color="red"/>
