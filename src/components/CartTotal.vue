@@ -2,9 +2,17 @@
 <span>
 Sum: {{ cartSum }}
 </span>
+<h3>Produkter i kundkorgen:</h3>
+<p>1) ...</p>
+<p>2) ...</p>
+<p>3) ...</p>
+<p>Saknar koppling...</p>
+<ButtonTemplate text="Buy Products" color="green"/>
+<ButtonTemplate text="Clear Cart" color="red"/>
 </template>
 
 <script>
+import ButtonTemplate from './ButtonTemplate.vue';
 // const cartSum = 0;
 
 export default {
@@ -13,6 +21,7 @@ export default {
       cartSum: 0,
     };
   },
+  components: { ButtonTemplate },
 };
 </script>
 <style scoped>
