@@ -13,7 +13,6 @@ Sum: {{ cartSum }}
 
 <script>
 import ButtonTemplate from './ButtonTemplate.vue';
-// const cartSum = 0;
 
 export default {
   data() {
