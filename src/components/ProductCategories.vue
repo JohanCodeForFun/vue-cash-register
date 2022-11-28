@@ -33,8 +33,7 @@ export default {
     return {
       products: [],
       categories: [],
-      cartData: [],
-      tempCart: [],
+      cart: [],
     };
   },
   methods: {
@@ -46,10 +45,10 @@ export default {
         localStorage.setItem('cartItems', '[]');
       }
 
-      // use tempCart to store previous product, and add it back to localstorage to array
-      this.tempCart = JSON.parse(localStorage.getItem('cartItems'));
-      this.tempCart.push(newCartItem);
-      localStorage.setItem('cartItems', JSON.stringify(this.tempCart));
+      // use cart to store previous product, and add it back to localstorage to array
+      this.cart = JSON.parse(localStorage.getItem('cartItems'));
+      this.cart.push(newCartItem);
+      localStorage.setItem('cartItems', JSON.stringify(this.cart));
     },
     async fetchAllProducts() {
       const res = await fetch('https://fakestoreapi.com/products');
