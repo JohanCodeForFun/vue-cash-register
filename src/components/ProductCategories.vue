@@ -1,5 +1,4 @@
 <template>
-  <button>Hello</button>
   <h3>div med categories nedan</h3>
   <div :key="item" v-for="item in categories">
   <p>test</p>
@@ -34,15 +33,24 @@ export default {
     return {
       products: [],
       categories: [],
-      cart: [],
+      cartData: [],
+      tempCart: [],
     };
   },
   methods: {
     addToCart(id) {
-      this.cart.push(this.products.find((element) => element.id === id));
-      console.log(this.cart);
+      const newCartItem = this.products.find((element) => element.id === id);
+
+      // if localstorage is null, set an array to remove error
+      if (localStorage.getItem('cartItems') === null) {
+        localStorage.setItem('cartItems', '[]');
+      }
+
+      // use tempCart to store previous product, and add it back to localstorage to array
+      this.tempCart = JSON.parse(localStorage.getItem('cartItems'));
+      this.tempCart.push(newCartItem);
+      localStorage.setItem('cartItems', JSON.stringify(this.tempCart));
     },
-    // try: {
     async fetchAllProducts() {
       const res = await fetch('https://fakestoreapi.com/products');
       const data = await res.json();
@@ -61,10 +69,6 @@ export default {
       //   (element) => element.category === "men's clothing",
       // ));
     },
-    //   catch(err) {
-    //     console.log(err);
-    //   },
-    // },
   },
   async created() {
     try {
@@ -94,7 +98,6 @@ export default {
     // },
   },
   mounted() {
-    console.log('mounted log');
   },
   components: {
     ButtonTemplate,
