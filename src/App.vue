@@ -3,8 +3,12 @@
     <img src="./img/logo-svgrepo-com.svg" alt="logo" class="logo">
     <span>Stephanies: </span>
     <router-link to="/">Home</router-link> |
-    <router-link to="/cart"><ButtonTemplate text="Cart" color="green" /> </router-link>
-    <router-link to="/register"><ButtonTemplate text="Register" color="orange" /> </router-link>
+    <router-link to="/cart"><ButtonTemplate text="Cart" color="green" />
+      <!-- <img src="/src/img/shopping-cart.png" alt="shopping-cart">  -->
+    QTY: {{cartItems}}</router-link>
+    <router-link to="/register">
+      <ButtonTemplate v-if="loggedIn === true" text="Register" color="orange" />
+    </router-link>
   </nav>
   <router-view/>
 </template>
@@ -14,8 +18,17 @@ import ButtonTemplate from './components/ButtonTemplate.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      loggedIn: false,
+      cartItems: '',
+    };
+  },
   components: {
     ButtonTemplate,
+  },
+  mounted() {
+    this.cartItems = JSON.parse(localStorage.getItem('cartItems')).length;
   },
 };
 </script>
