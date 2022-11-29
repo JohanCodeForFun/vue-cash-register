@@ -25,6 +25,11 @@ export default {
   methods: {
     removeFromCart(id) {
       this.cart = JSON.parse(localStorage.getItem('cartItems'));
+      const index = this.cart.findIndex((product) => product.id === id);
+      if (index > -1) {
+        this.cart.splice(index, id);
+      }
+      console.log(this.cart);
       console.log('remove from cart clicked', id);
     },
     clearCart() {
