@@ -72,7 +72,6 @@ export default {
   async created() {
     try {
       this.products = await this.fetchAllProducts();
-      console.log(this.products);
     } catch (err) {
       console.log(err);
     }
