@@ -48,6 +48,15 @@ export default {
     // collect products in localStorage to cartStorage and display on page
     this.cartStorage = JSON.parse(localStorage.getItem('cartItems'));
   },
+  watch: {
+    cartStorage: {
+      deep: true,
+      handler() {
+        this.cartStorage = JSON.parse(localStorage.getItem('cartItems'));
+        console.log('temp kundkorg ändrar');
+      },
+    },
+  },
 };
 </script>
 <style scoped>

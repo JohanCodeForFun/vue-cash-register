@@ -100,6 +100,15 @@ export default {
   components: {
     ButtonTemplate,
   },
+  watch: {
+    cart: {
+      deep: true,
+      handler() {
+        this.cart = JSON.parse(localStorage.getItem('cartItems'));
+        console.log('temp kundkorg ändrar');
+      },
+    },
+  },
 };
 
 </script>
